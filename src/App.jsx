@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// App layout
+import Page from "../src/components/sections/Page";
+
+// Header
+import Header from "../src/components/sections/Header";
+import Navigation from "./components/sections/Navigation/Navigation";
+import Hero from "./components/sections/Hero";
+
+// Main
+import Main from "../src/components/sections/Main";
+import Dashboard from "../src/components/sections/Dashboard";
+import AppStatistics from "../src/components/sections/AppStatistics";
+import Features from "../src/components/sections/Features";
+import Pricing from "../src/components/sections/Pricing/Pricing";
+import Testimonials from "./components/sections/Testimonials/Testimonials";
+import CTA from "../src/components/sections/CTA";
+
+// Footer
+import Footer from "../src/components/sections/Footer";
+
+// UI
+import Modal from "./components/UI/Modal";
+import MoreInformation from "./components/UI/MoreInformation";
+
+import { ModalContextProvider } from "./contexts/ModalContext";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <ModalContextProvider>
+      <Page>
+        <Header>
+          <Navigation />
+          <Hero />
+        </Header>
+
+        <Main>
+          <Dashboard />
+          <AppStatistics />
+          <Features />
+          <Pricing />
+          <Testimonials />
+          <CTA />
+        </Main>
+
+        <Footer />
+
+        <Modal modalName="more-information">
+          <MoreInformation />
+        </Modal>
+      </Page>
+    </ModalContextProvider>
+  );
 }
 
-export default App
+export default App;
