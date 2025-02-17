@@ -1,9 +1,5 @@
-import React from 'react'
-
-const Main = () => {
-    return (
-        <div>Main</div>
-    )
+function Main({ children }) {
+    return <main className="w-full">{children}</main>;
 }
 
-export default Main
+export default Main;
